@@ -1,6 +1,6 @@
 <?php
 /**
- * Customizer Control: toggle.
+ * Customizer Control: switch.
  *
  * @package     Kirki
  * @subpackage  Controls
@@ -9,7 +9,10 @@
  * @since       1.0
  */
 
+namespace Kirki\Control;
+
 use Kirki\Control\Base;
+use Kirki\Core\Kirki;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -17,9 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Toggle control (modified checkbox).
+ * Switch control (modified checkbox).
  */
-class Toggle extends Base {
+class Checkbox_Switch extends Base {
 
 	/**
 	 * The control type.
@@ -27,7 +30,7 @@ class Toggle extends Base {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'kirki-toggle';
+	public $type = 'kirki-switch';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -76,16 +79,25 @@ class Toggle extends Base {
 	 */
 	protected function content_template() {
 		?>
-		<label for="toggle_{{ data.id }}">
+		<div class="switch<# if ( data.choices['round'] ) { #> round<# } #>">
 			<span class="customize-control-title">
 				{{{ data.label }}}
 			</span>
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
-			<input class="screen-reader-text" {{{ data.inputAttrs }}} name="toggle_{{ data.id }}" id="toggle_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' == data.value ) { #> checked<# } #> hidden />
-			<span class="switch"></span>
-		</label>
+			<input class="screen-reader-text" {{{ data.inputAttrs }}} name="switch_{{ data.id }}" id="switch_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' == data.value ) { #> checked<# } #> />
+			<label class="switch-label" for="switch_{{ data.id }}">
+				<span class="switch-on">
+					<# data.choices.on = data.choices.on || '<?php esc_html_e( 'On', 'kirki' ); ?>' #>
+					{{ data.choices.on }}
+				</span>
+				<span class="switch-off">
+					<# data.choices.off = data.choices.off || '<?php esc_html_e( 'Off', 'kirki' ); ?>' #>
+					{{ data.choices.off }}
+				</span>
+			</label>
+		</div>
 		<?php
 	}
 }
