@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Switch control (modified checkbox).
  */
-class Kirki_Control_Switch extends Base {
+class Switch extends Base {
 
 	/**
 	 * The control type.

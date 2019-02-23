@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Toggle control (modified checkbox).
  */
-class Kirki_Control_Toggle extends Base {
+class Toggle extends Base {
 
 	/**
 	 * The control type.
