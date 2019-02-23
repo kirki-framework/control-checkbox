@@ -1,3 +1,4 @@
-package-lock.json
+node_modules
+.sass-cache
 *.map
-composer.lock
+package-lock.json
