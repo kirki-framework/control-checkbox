@@ -15,6 +15,7 @@
 namespace Kirki\Control;
 
 use Kirki\Control\Base;
+use Kirki\Core\Kirki;
 
 /**
  * Adds a checkbox control.
