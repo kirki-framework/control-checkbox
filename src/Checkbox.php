@@ -32,6 +32,41 @@ class Checkbox extends Base {
 	public $type = 'kirki-checkbox';
 
 	/**
+	 * Enqueue control related scripts/styles.
+	 *
+	 * @access public
+	 */
+	public function enqueue() {
+		parent::enqueue();
+
+		$url = apply_filters(
+			'kirki_package_url_control_checkbox',
+			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-checkbox/src'
+		);
+
+		// Enqueue the script.
+		wp_enqueue_script(
+			'kirki-control-checkbox',
+			"$url/assets/scripts/control.js",
+			[
+				'kirki-script',
+				'jquery',
+				'customize-base',
+			],
+			KIRKI_VERSION,
+			false
+		);
+
+		// Enqueue the style.
+		wp_enqueue_style(
+			'kirki-control-checkbox-style',
+			"$url/assets/styles/style.css",
+			[],
+			KIRKI_VERSION
+		);
+	}
+
+	/**
 	 * Render the control's content.
 	 * Verbatim copy from WP_Customize_Control->render_content.
 	 *

@@ -12,5 +12,7 @@ add_action(
     'customize_register',
     function() {
         class_alias( 'Kirki\Control\Checkbox', 'Kirki_Control_Checkbox' );
+        class_alias( 'Kirki\Control\Switch', 'Kirki_Control_Switch' );
+        class_alias( 'Kirki\Control\Toggle', 'Kirki_Control_Toggle' );
     }
 );
