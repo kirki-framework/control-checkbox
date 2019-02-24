@@ -50,7 +50,6 @@ class Checkbox_Toggle extends Base {
 			'kirki-control-checkbox',
 			"$url/assets/scripts/control.js",
 			[
-				'kirki-script',
 				'jquery',
 				'customize-base',
 				'kirki-dynamic-control',
