@@ -73,7 +73,6 @@ class Checkbox extends Base {
 	 * @return void
 	 */
 	protected function content_template() {
-		$description_id = '' . $this->id;
 		?>
 		<span class="customize-inside-control-row">
 			<input
