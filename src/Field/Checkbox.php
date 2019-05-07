@@ -47,16 +47,15 @@ class Checkbox extends Field {
 	 * @return array
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_setting_args( $args, $wp_customize );
 
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
-		}
-
-		// Set the sanitize-callback if none is defined.
-		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
-			$args['sanitize_callback'] = function( $value ) {
-				return ( '0' === $value || 'false' === $value ) ? false : (bool) $value;
-			};
+			// Set the sanitize-callback if none is defined.
+			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+				$args['sanitize_callback'] = function( $value ) {
+					return ( '0' === $value || 'false' === $value ) ? false : (bool) $value;
+				};
+			}
 		}
 		return $args;
 	}
@@ -71,15 +70,10 @@ class Checkbox extends Field {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
-		if ( $args['settings'] !== $this->args['settings'] ) {
-			return $args;
+		if ( $args['settings'] === $this->args['settings'] ) {
+			$args = parent::filter_control_args( $args, $wp_customize );
+			$args['type'] = 'kirki-checkbox';
 		}
-
-		$args = parent::filter_control_args( $args, $wp_customize );
-
-		// Set the control-type.
-		$args['type'] = 'kirki-checkbox';
-
 		return $args;
 	}
 }
