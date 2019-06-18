@@ -1,26 +1,30 @@
 /* global module */
 module.exports = function( grunt ) {
-
 	grunt.initConfig( {
 
 		// Compile CSS
 		sass: {
 			dist: {
+				options: {
+					style: 'compressed',
+				},
 				files: {
-					'src/assets/styles/style.css': 'src/assets/styles/style.scss'
-				}
-			}
+					'src/assets/styles/style.css': 'src/assets/styles/style.scss',
+				},
+			},
 		},
 
 		// Watch task (run with "grunt watch")
 		watch: {
 			css: {
 				files: [
-					'src/assets/styles/*.scss'
+					'src/assets/styles/*.scss',
 				],
-				tasks: [ 'sass' ]
-			}
-		}
+				tasks: [
+					'sass',
+				],
+			},
+		},
 	} );
 
 	grunt.loadNpmTasks( 'grunt-contrib-sass' );
